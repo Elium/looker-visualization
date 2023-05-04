@@ -48,6 +48,7 @@ const visObject = {
     });
       element.innerHTML = formattedData.join("");
     }
+	doneRendering()
 };
 
 looker.plugins.visualizations.add(visObject);
