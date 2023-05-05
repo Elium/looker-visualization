@@ -29,26 +29,31 @@ const visObject = {
   * the data and should update the visualization with the new data.
   **/
 	updateAsync: function(data, element, config, queryResponse, details, doneRendering){
+ 
+       var formattedData = [];
+       
+       data.forEach(function(d) {
 
-      var formattedData = [];
-      
-      data.forEach(function(d) {
-      formattedData.push(`<div style="display: flex; align-items: center!important; height: 50px; font-size:14px; font-family: roboto,sans-serif; padding: 8px 0;border-bottom: 1px solid #E0E0E0">
-  <div style="width: 66%">${d.medialand_groupby_attitude_category_1}</div>
-  <div style="width: 33%; display: flex; flex-direction: column;
-  align-items: center!important;
-  justify-content: center;">
-    <div style="margin-bottom: 6px; color: #578DDA;  text-transform: uppercase; font-weight: bold
-    ">${d.medialand_groupby_attitude_category_2} - ${d.medialand_groupby_attitude_pourcentage}%</div>
-    <div style="background: #D9D9D9; width: 100%;height: 5px">
-      <div style="width: ${d.medialand_groupby_attitude_pourcentage}%; height: 100%; background: #578DDA"></div>
-    </div>
-  </div>
-</div>`);
-    });
-      element.innerHTML = formattedData.join("");
-      doneRendering()
-    }
-};
+        var question = d['Medialand Groupby Attitude Category 1'];
+        var answer = d['Medialand Groupby Attitude Category 2'];
+        var value = d['Medialand Groupby Attitude Pourcentage'];
+
+       formattedData.push(`<div style="display: flex; align-items: center!important; justify-content: space-between!important; height: 50px; font-size:14px; font-family: roboto,sans-serif; padding: 8px 0;border-bottom: 1px solid #E0E0E0">
+   <div style="width: 66%">${question}</div>
+   <div style="width: 30%; display: flex; flex-direction: column;
+   align-items: center!important;
+   justify-content: center;">
+     <div style="margin-bottom: 6px; color: #578DDA;  text-transform: uppercase; font-weight: bold
+     ">${answer} - ${value}%</div>
+     <div style="background: #D9D9D9; width: 100%;height: 5px">
+       <div style="width: ${value}%; height: 100%; background: #578DDA"></div>
+     </div>
+   </div>
+ </div>`);
+     });
+       element.innerHTML = formattedData.join("");
+    
+     }
+ };
 
 looker.plugins.visualizations.add(visObject);
