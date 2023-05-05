@@ -47,6 +47,7 @@ const visObject = {
 </div>`);
     });
       element.innerHTML = formattedData.join("");
+      doneRendering()
     }
 };
 
