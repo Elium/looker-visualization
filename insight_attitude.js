@@ -37,6 +37,10 @@ const visObject = {
         var question = d['medialand_groupby_attitude.category_1'];
         var answer = d['medialand_groupby_attitude.category_2'];
         var value = d['medialand_groupby_attitude.pourcentage'];
+	       
+	console.log(question);
+	console.log(answer);
+	console.log(value);
 
        formattedData.push(`<div style="display: flex; align-items: center!important; justify-content: space-between!important; height: 50px; font-size:14px; font-family: roboto,sans-serif; padding: 8px 0;border-bottom: 1px solid #E0E0E0">
    <div style="width: 66%">${question}</div>
