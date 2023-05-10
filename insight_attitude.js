@@ -53,6 +53,7 @@ const visObject = {
      });
        element.innerHTML = formattedData.join("");
     
+	doneRendering()
      }
  };
 
